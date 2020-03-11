@@ -1,0 +1,394 @@
+create table company
+(
+com_id 		number,
+com_code 	varchar2(10),
+com_name 	varchar2(100),
+contact_person	varchar2(100),
+addr1		varchar2(200),
+addr2		varchar2(200),
+industry_type 	varchar2(2),
+phone_no 	varchar2(10),
+mobile_no 	varchar2(12),
+fax_no 		varchar2(10),
+email 		varchar2(20),
+website 	varchar2(12),
+com_dob 	date,
+trade_license_no varcahr2(20),
+renew_date 	date,
+tin_no 		varcahr2(20),
+vat_no 		varcahr2(20),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+license_key 	varchar2(100),
+expiry_date	date,
+valid		varchar2(3),
+installation_dt date
+);
+
+create table branch
+(
+com_id 		number,
+branch_id 	number,
+branch_code 	varchar2(10),
+branch_name 	varchar2(100),
+contact_person	varchar2(100),
+addr1		varchar2(200),
+addr2		varchar2(200),
+phone_no 	varchar2(10),
+mobile_no 	varchar2(12),
+fax_no 		varchar2(10),
+email 		varchar2(20),
+website 	varchar2(12),
+branch_dob 	date,
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+location_id	number,
+longitude	number,
+latitude	number
+);
+
+
+create table category
+(
+cat_id 		number,
+cat_name 	varchar2(100),
+description 	varchar2(100),
+short_code	varchar2(4),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+
+create table sub_category
+(
+sub_cat_id 	number,
+cat_id 		number,
+sub_cat_name 	varchar2(100),
+description 	varchar2(100),
+short_code	varchar2(4),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+
+create table product_info
+(
+product_id 	number,
+product_code	varchar2(10),
+product_type	varchar2(20),
+cat_id 		number,
+sub_cat_id 	number,
+product_name 	varchar2(100),
+description 	varchar2(100),
+brand		varchar2(40),
+model		varchar2(40),
+country		varchar2(40),
+specification	varchar2(100),
+dimension	varchar2(20),
+pack_size	varchar2(20),
+pcs		number,
+purchase_unit	varchar2(10),
+sales_unit	varchar2(10),
+t_p		number,
+vat		number,
+s_p		number,
+mrp		number,
+min_stock	number,
+max_stock	number,
+lot_size	number,
+serial_profile	varchar2(3),
+barcode_profile	varchar2(3),
+expiry_profile	varchar2(3),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+create table customer
+(
+cust_id 	number,
+branch_id 	number,
+cust_name 	varchar2(100),
+cust_type	varchar2(4),
+credit_type	varchar2(6),
+addr1		varchar2(200),
+addr2		varchar2(200),
+phone_no 	varchar2(10),
+mobile_no 	varchar2(12),
+fax_no 		varchar2(10),
+email 		varchar2(20),
+website 	varchar2(12),
+dob 		date,
+credit_limit	number,
+area_code	varchar2(20),
+terr_code	varchar2(20),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+create table supplier
+(
+sup_id 		number,
+branch_id 	number,
+sup_name 	varchar2(100),
+company_name 	varchar2(100),
+contact_person 	varchar2(100),
+sup_type	varchar2(4),
+credit_type	varchar2(6),
+addr1		varchar2(200),
+addr2		varchar2(200),
+phone_no 	varchar2(10),
+mobile_no 	varchar2(12),
+fax_no 		varchar2(10),
+email 		varchar2(20),
+website 	varchar2(12),
+country 	varchar2(20),
+tin		varchar2(20),
+payment_terms	varchar2(20),
+bank_ac_no	varchar2(20),
+bank_code	varchar2(30),
+bank_br_code	varchar2(30),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+create table employee
+(
+emp_id 		number,
+branch_id 	number,
+emp_name 	varchar2(100),
+father_name 	varchar2(100),
+mother_name 	varchar2(100),
+spouse_name 	varchar2(100),
+nominee_name 	varchar2(100),
+emp_type	varchar2(4),
+desig_id	varchar2(3),
+sec_no		varchar2(3),
+addr1		varchar2(200),
+addr2		varchar2(200),
+phone_no 	varchar2(10),
+mobile_no 	varchar2(12),
+com_mobile_no 	varchar2(12),
+email 		varchar2(20),
+dob 		date,
+nid		varchar2(20),
+tin		varchar2(20),
+salary		number,
+payment_type	varchar2(5),
+bank_ac_no	varchar2(20),
+bank_code	varchar2(30),
+bank_br_code	varchar2(30),
+area_code	varchar2(20),
+terr_code	varchar2(20),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number,
+emp_photo	blob, --image
+emp_signature	blob --image
+);
+
+create table bank
+(
+bank_code	varchar2(30),
+bank_name	varchar2(100),
+address		varchar2(200),
+contact_person	varchar2(20),
+contact_number	varchar2(20),
+routing_number	varchar2(20),
+email		varchar2(20),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+create table bank_branch
+(
+branch_code	varchar2(30),
+bank_code	varchar2(30),
+branch_name	varchar2(100),
+address		varchar2(200),
+contact_person	varchar2(20),
+contact_number	varchar2(20),
+email		varchar2(20),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+create table account_info
+(
+account_number	varchar2(24),
+account_name	varchar2(100),
+account_type	varchar2(20),
+branch_code	varchar2(30),
+bank_code	varchar2(30),
+nominee_1	varchar2(30),
+nominee_2	varchar2(30),
+mobile		varchar2(20),
+email		varchar2(20),
+opening_dt	date,
+tp		number,
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+create table module_info
+(
+module_id 	number,
+module_name 	varchar2(100),
+module_short_name varchar2(3),
+module_icon	varchar2(100), --URL
+module_bg_image	varchar2(100), --URL
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+
+create table user_info
+(
+user_id		number,
+emp_id 		number,
+user_name 	varchar2(100),
+password	varchar2(100),
+user_type	varchar2(100),
+registration_dt date default sysdate,
+password_expiry_dt date,
+restricted	varchar2(3),
+valid_from_dt	date default sysdate,
+valid_to_dt	date default '31/12/9999',
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number,
+branch_id 	number
+);
+
+
+create table menu_info
+(
+menu_id 	number,
+menu_name 	varchar2(100),
+menu_short_name varchar2(3),
+menu_type	varchar2(10), --Forms/Reports
+module_id 	number,
+menu_icon	varchar2(100), --URL
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+
+create table role_master
+(
+role_id 	number,
+role_name 	varchar2(100),
+role_short_name varchar2(3),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+create table role_detial
+(
+role_id		number,
+menu_id 	number,
+assign_dt	date,
+valid_from_dt	date default sysdate,
+valid_to_dt	date default '31/12/9999',
+remarks		varchar2(200),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number
+);
+
+
+create table user_vs_role
+(
+user_id		number,
+role_id 	number,
+assign_dt	date,
+valid_from_dt	date,
+valid_to_dt	date,
+remarks		varchar2(200),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number,
+branch_id 	number
+);
+
+create table user_action_details
+(
+user_id		number,
+menu_id 	number,
+view_only	number,
+insert_only	number,
+update_only	number,
+delete_only	number,
+all_permission	number,
+assign_dt	date,
+valid_from_dt	date default sysdate,
+valid_to_dt	date default '31/12/9999',
+remarks		varchar2(200),
+entry_user 	varchar2(10),
+entry_dt 	date default sysdate,
+update_user 	varchar2(10),
+update_dt 	date,
+valid		varchar2(3),
+com_id 		number,
+branch_id 	number
+);
